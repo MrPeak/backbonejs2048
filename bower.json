@@ -1,0 +1,31 @@
+{
+  "name": "backbonejs2048",
+  "version": "0.0.0",
+  "authors": [
+    "mrpeak (gfeng.peak@gmail.com)"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "backbone",
+    "2048"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.10.*",
+    "requirejs": "~2.1.15",
+    "requirejs-text": "~2.0.12",
+    "backbone": "~1.1.2",
+    "semantic-ui": "~0.19.3",
+    "underscore": "~1.7.0"
+  }
+}
