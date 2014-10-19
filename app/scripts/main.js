@@ -2,18 +2,6 @@
 'use strict';
 
 require.config({
-  shim: {
-    underscore: {
-      exports: '_'
-    },
-    backbone: {
-      deps: [
-        'underscore',
-        'jquery'
-      ],
-      exports: 'Backbone'
-    }
-  },
   paths: {
     jquery: '../bower_components/jquery/jquery',
     backbone: '../bower_components/backbone/backbone',
@@ -23,9 +11,9 @@ require.config({
 });
 
 require([
-  'backbone',
-  'epoxy'
-], function(Backbone) {
-  Backbone.history.start();
-  console.log(Backbone.Epoxy);
+  'app'
+], function(App) {
+
+  App.initialize();
+
 });
