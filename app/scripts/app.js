@@ -1,7 +1,6 @@
-define([
-  'backbone',
-  'router'
-], function(Backbone, Router) {
+'use strict';
+
+define(['backbone', 'router'], function(Backbone, Router) {
 
   var initialize = function() {
     Router.initialize();
@@ -9,5 +8,5 @@ define([
 
   return {
     initialize: initialize
-  }
+  };
 });

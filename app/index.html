@@ -2,41 +2,178 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>backbonejs2048</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-    </head>
-    <body class="body">
-        <!--[if lt IE 10]>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>backbonejs2048</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="bower_components/semantic-ui/build/packaged/css/semantic.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+
+<body class="body">
+  <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <ul>
-            <li><a href="#/home">Home</a></li>
-            <li><a href="#/search/你好">Search</a></li>
-            <li><a href="#/search/nihao/user34">Search</a></li>
-        </ul>
+  <div class="ui teal menu">
+    <a class="active item">
+      <i class="home icon"></i> 主页
+    </a>
+    <a class="item">
+      <i class="trophy icon"></i> 本日排行
+    </a>
+    <div class="menu right">
+      <a class="item util-hidden" id="logout-nav">
+        <i class="sign out icon"></i> 退出
+      </a>
+      <a class="item" id="login-nav">
+        <i class="sign in icon"></i> 登录
+      </a>
+    </div>
+  </div>
+  <ul class="util-hidden">
+    <li><a href="#/">Home</a>
+    </li>
+    <li><a href="#/search/你好">Search</a>
+    </li>
+    <li><a href="#/search/nihao/user34">Search</a>
+    </li>
+    <li><a href="#/houhou">Default</a>
+    </li>
+  </ul>
 
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
+  <!-- modal dialogs -->
+  <div class="ui modal login">
+    <div class="ui header">
+      登陆 2048 页面版！
+      <span class="sub header">（<a href="#" class="skip">跳过</a>登陆，游戏状态将不会被存储）</span>
+    </div>
+    <div class="content">
+      <div class="ui two column middle aligned relaxed grid basic segment" id="login-pane">
+        <div class="column">
+          <div class="ui form segment">
+            <div class="field">
+              <label>用户邮箱</label>
+              <div class="ui left labeled icon input">
+                <input type="email" placeholder="用户名">
+                <i class="user icon"></i>
+                <div class="ui corner label">
+                  <i class="asterisk icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>密码</label>
+              <div class="ui left labeled icon input">
+                <input type="password">
+                <i class="lock icon"></i>
+                <div class="ui corner label">
+                  <i class="asterisk icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="inline field">
+              <div class="ui checkbox remember">
+                <input type="checkbox">
+                <label>记住登陆状态</label>
+              </div>
+            </div>
+            <div class="ui blue submit button" id="login-trigger">登陆</div>
+          </div>
+        </div>
+        <div class="ui vertical divider">
+          Or
+        </div>
+        <div class="center aligned column switch">
+          <div class="ui buttons">
+            <div class="ui positive button green labeled icon" id="goto-signup">
+              <i class="signup icon"></i>
+              注册
+            </div>
+            <div class="or"></div>
+            <div class="ui negative button labeled icon skip">
+              <i class="rocket icon"></i>
+              跳过
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui column transition hidden" id="signup-pane">
+        <div class="ui form segment left aligned">
+          <div class="field">
+            <label>用户邮箱</label>
+            <div class="ui left labeled icon input">
+              <input type="email" placeholder="填写正确的邮箱">
+              <i class="user icon"></i>
+              <div class="ui corner label">
+                <i class="asterisk icon"></i>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>登陆密码</label>
+            <div class="ui left labeled icon input">
+              <input type="password">
+              <i class="lock icon"></i>
+              <div class="ui corner label">
+                <i class="asterisk icon"></i>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>再次输入密码</label>
+            <div class="ui left labeled icon input">
+              <input type="password">
+              <i class="lock icon"></i>
+              <div class="ui corner label">
+                <i class="asterisk icon"></i>
+              </div>
+            </div>
+          </div>
+          <div class="inline field">
+            <div class="ui checkbox">
+              <input type="checkbox">
+              <label>只要让我注册我什么都答应</label>
+            </div>
+          </div>
+          <div class="ui teal submit button">注册</div>
+          <div class="ui negative button" id="cancel-signup">取消</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- build:js scripts/main.js -->
-        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
-        <!-- endbuild -->
+  <div class="ui basic small modal logout">
+    <div class="content">
+      <div>
+        <p>确定登出？</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="two fluid ui buttons">
+        <div class="ui negative labeled icon button">
+          <i class="remove icon"></i>
+          取消
+        </div>
+        <div class="ui positive right labeled icon button">
+          确定
+          <i class="checkmark icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- build:js scripts/main.js -->
+  <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+  <!-- endbuild -->
 </body>
+
 </html>

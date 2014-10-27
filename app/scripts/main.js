@@ -2,17 +2,19 @@
 'use strict';
 
 require.config({
+  shim: {
+    semantic: ['jquery']
+  },
   paths: {
     jquery: '../bower_components/jquery/jquery',
     backbone: '../bower_components/backbone/backbone',
     underscore: '../bower_components/underscore/underscore',
-    epoxy: './vendor/backbone.epoxy'
+    epoxy: './vendor/backbone.epoxy',
+    semantic: '../bower_components/semantic-ui/build/packaged/javascript/semantic'
   }
 });
 
-require([
-  'app'
-], function(App) {
+require(['app', 'semantic'], function(App) {
 
   App.initialize();
 
