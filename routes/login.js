@@ -1,9 +1,6 @@
-var express = require('express');
-var router = express.Router();
-
 /* POST login listing. */
-router.post('/login/:id', function(req, res) {
+var postHandle = function(req, res, next) {
   res.send('Do you want to log in?');
-});
+};
 
-module.exports = router;
+module.exports = postHandle;
