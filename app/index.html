@@ -23,22 +23,38 @@
   <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-  <div class="ui teal menu">
-    <a class="active item">
-      <i class="home icon"></i> 主页
-    </a>
-    <a class="item">
-      <i class="trophy icon"></i> 本日排行
-    </a>
-    <div class="menu right">
-      <a class="item util-hidden" id="logout-nav">
-        <i class="sign out icon"></i> 退出
-      </a>
-      <a class="item" id="login-nav">
-        <i class="sign in icon"></i> 登录
-      </a>
+
+  <!-- nav -->
+  <div class="ui grid nav">
+    <div class="row">
+      <div class="ui teal menu">
+        <a class="active item" href="#/">
+          <i class="home icon"></i> 主页
+        </a>
+        <a class="item" href="#/rank">
+          <i class="trophy icon"></i> 本日排行
+        </a>
+        <div class="menu right">
+          <a class="item util-hidden" id="logout-nav">
+            <i class="sign out icon"></i> 退出
+          </a>
+          <a class="item" id="login-nav">
+            <i class="sign in icon"></i> 登录
+          </a>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="util-space"></div>
+  <!-- main content -->
+  <div class="ui page grid main">
+    <div class="row">
+      <div class="sixteen wide column">
+        test
+      </div>
+    </div>
+  </div>
+
   <ul class="util-hidden">
     <li><a href="#/">Home</a>
     </li>

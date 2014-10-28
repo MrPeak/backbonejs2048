@@ -1,5 +1,9 @@
 /* util classes */
-
 .util-hidden {
     display: none !important;
+}
+.util-space {
+    display: block;
+    width: 100%;
+    height: 10px;
 }

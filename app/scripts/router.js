@@ -1,25 +1,37 @@
 // 'use strict';
-define(['backbone', './views/homeView'], function(Backbone, HomeView) {
+define(['backbone', './views/homeView', './views/rankView'], function(Backbone, HomeView, RankView) {
 
   var GlobalRouter = Backbone.Router.extend({
     routes: {
-      '': 'home',
+      '': 'game',
+      'rank': 'rank',
       // 'home/*path': 'home',
-      'search/:q': 'search',
-      'search/:q/user:id': 'search',
+      // 'search/:q': 'search',
+      // 'search/:q/user:id': 'search',
       // default actions
       '*actions': 'defaultAction'
     },
-    home: function () {
+    initialize: function() {
+      this.$navItems = $('.ui.nav').find('.item');
+
       var homeView = new HomeView();
       homeView.render();
     },
-    search: function(q, id) {
-      console.log({
-        q: q,
-        id: id
-      });
+    game: function() {
+      this.$navItems.removeClass('active').filter('[href="#/"]').addClass('active');
+      // var gameView = new GameView();
     },
+    rank: function() {
+      // update navigation item's state
+      this.$navItems.removeClass('active').filter('[href*="rank"]').addClass('active');
+      var rankView = new RankView();
+    },
+    // search: function(q, id) {
+    //   console.log({
+    //     q: q,
+    //     id: id
+    //   });
+    // },
     defaultAction: function() {
       console.log('Do nothing!');
     }

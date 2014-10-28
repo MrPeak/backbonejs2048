@@ -48,11 +48,14 @@ define(['backbone', '../collections/rects'], function(Backbone, Rects) {
       return window.localStorage.getItem('isLogin');
     },
     _handleLogin: function(hasLogin) {
+
       if (hasLogin === true) {
         return true;
-      } else if (hasLogin === undefined) {
+      } else if (typeof hasLogin.type == 'string') {
         this.$loginModal.modal('show');
       } else {
+        if (window.sessionStorage.isFirstVisit == 'no') return;
+
         this.$loginModal
           .modal('setting', {
             closable: false,
@@ -60,6 +63,8 @@ define(['backbone', '../collections/rects'], function(Backbone, Rects) {
               $(this)
                 .find('.checkbox')
                 .checkbox();
+              // tell browser this user has been visited
+              window.sessionStorage.isFirstVisit = 'no';
             },
             onHide: function() {
               $(this)
@@ -83,11 +88,12 @@ define(['backbone', '../collections/rects'], function(Backbone, Rects) {
       }).modal('show');
     },
     _skipLogin: function() {
-      this.$loginModal
+      var that = this;
+      that.$loginModal
         .modal('hide')
         .find('input[type="text"], input[type="password"]')
         .val('');
-      this._resetPane();
+      window.setTimeout(that._resetPane, 1000);
     },
     _cleanUserData: function() {
       this.isLogin = false;
