@@ -10,6 +10,7 @@ require.config({
     backbone: '../bower_components/backbone/backbone',
     underscore: '../bower_components/underscore/underscore',
     epoxy: './vendor/backbone.epoxy',
+    text: '../bower_components/requirejs-text/text',
     semantic: '../bower_components/semantic-ui/build/packaged/javascript/semantic'
   }
 });

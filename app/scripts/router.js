@@ -1,5 +1,5 @@
 // 'use strict';
-define(['backbone', './views/homeView', './views/rankView'], function(Backbone, HomeView, RankView) {
+define(['backbone', './views/homeView', './views/gameView', './views/rankView'], function(Backbone, HomeView, GameView, RankView) {
 
   var GlobalRouter = Backbone.Router.extend({
     routes: {
@@ -19,12 +19,14 @@ define(['backbone', './views/homeView', './views/rankView'], function(Backbone, 
     },
     game: function() {
       this.$navItems.removeClass('active').filter('[href="#/"]').addClass('active');
-      // var gameView = new GameView();
+      var gameView = new GameView();
+      gameView.render();
     },
     rank: function() {
       // update navigation item's state
       this.$navItems.removeClass('active').filter('[href*="rank"]').addClass('active');
       var rankView = new RankView();
+      rankView.render();
     },
     // search: function(q, id) {
     //   console.log({
