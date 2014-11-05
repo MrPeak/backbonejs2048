@@ -51,7 +51,7 @@ define(['backbone', '../collections/rects'], function(Backbone, Rects) {
 
       if (hasLogin === true) {
         return true;
-      } else if (typeof hasLogin.type == 'string') {
+      } else if (typeof hasLogin == 'string') {
         this.$loginModal.modal('show');
       } else {
         if (window.sessionStorage.isFirstVisit == 'no') return;

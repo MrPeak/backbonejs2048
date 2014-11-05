@@ -36,16 +36,15 @@ app.use(express.static(path.join(__dirname, 'app')));
 // app.use(express.static(path.join(__dirname, 'dist')));
 
 // ajax routes
-app.get('/login', routes.login);
-app.use('/logout', routes.logout);
-app.use('/signup', routes.signup);
+// app.get('/login', routes.login);
+// app.use('/logout', routes.logout);
+// app.use('/signup', routes.signup);
 
-app.param('id', function(req, res, next, id) {
-  console.log(id);
-  next();
-});
+app.get('/rank/:type', routes.getRank.getHandle);
+
 app.get('/gamedata/:id', routes.gamedata.getHandle)
   .post('/gamedata', routes.gamedata.postHandle);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
