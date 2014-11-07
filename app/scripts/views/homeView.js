@@ -1,4 +1,4 @@
-define(['backbone', '../collections/rects'], function(Backbone, Rects) {
+define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) {
   // 'use strict';
   var HomeView = Backbone.View.extend({
     el: 'body',
@@ -48,10 +48,10 @@ define(['backbone', '../collections/rects'], function(Backbone, Rects) {
       return window.localStorage.getItem('isLogin');
     },
     _handleLogin: function(hasLogin) {
-
+      console.log(hasLogin);
       if (hasLogin === true) {
         return true;
-      } else if (typeof hasLogin == 'string') {
+      } else if (typeof hasLogin.type == 'string') {
         this.$loginModal.modal('show');
       } else {
         if (window.sessionStorage.isFirstVisit == 'no') return;

@@ -1,5 +1,5 @@
 define(['backbone'], function(Backbone) {
-  var Rect = Backbone.Model.extend({
+  var TileModel = Backbone.Model.extend({
     defaults: {
       value: 2,
       x: 1,
@@ -8,6 +8,6 @@ define(['backbone'], function(Backbone) {
     urlRoot: ''
   });
 
-  return Rect;
+  return TileModel;
   
 });

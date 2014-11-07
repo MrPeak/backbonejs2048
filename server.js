@@ -36,11 +36,8 @@ app.use(express.static(path.join(__dirname, 'app')));
 // app.use(express.static(path.join(__dirname, 'dist')));
 
 // ajax routes
-// app.get('/login', routes.login);
-// app.use('/logout', routes.logout);
-// app.use('/signup', routes.signup);
 
-app.get('/rank/:type', routes.getRank.getHandle);
+app.get('/rank', routes.getRank.getHandle);
 
 app.get('/gamedata/:id', routes.gamedata.getHandle)
   .post('/gamedata', routes.gamedata.postHandle);

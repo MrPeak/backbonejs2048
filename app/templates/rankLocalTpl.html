@@ -1,0 +1,27 @@
+<div><%= type %></div>
+<% _(rankData).each(function(val, i) { %>
+  <div>
+    <% if (i == 0) { %>
+      <img src="./images/trophy-gold.png" alt="" class="ui avatar image position">
+    <% } else if (i == 1) { %>
+      <img src="./images/trophy-silver.png" alt="" class="position ui image avatar">
+    <% } else if (i == 2) { %>
+      <img src="./images/trophy-bronze.png" alt="" class="position ui image avatar">
+    <% } else { %>
+      <a class="ui teal circular label position">
+        <% if (i < 9) { %>
+          <%= '0' + (i + 1) %>
+        <% } else { %>
+          <%= i + 1 %>
+        <% } %>
+      </a>
+    <% } %>
+    <div class="item rank">
+      <img class="ui avatar image" src="<%= val.avatar %>">
+      <div class="content">
+        <span class="ui orange horizontal label score"><%= val.score %></span>
+        <span class="user-name"><%= val.name %></span>
+      </div>
+    </div>
+  </div>
+<% }); %>

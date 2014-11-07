@@ -23,10 +23,8 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
       gameView.render();
     },
     rank: function() {
-      // update navigation item's state
       this.$navItems.removeClass('active').filter('[href*="rank"]').addClass('active');
       var rankView = new RankView();
-      rankView.render();
     },
     // search: function(q, id) {
     //   console.log({

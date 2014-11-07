@@ -1,20 +1,32 @@
-define(['backbone', 'text!../../templates/rankTpl.html', '../models/rank'], function(Backbone, rankTpl, Rank) {
+define(['backbone', 'text!../../templates/rankTpl.html', 'text!../../templates/rankLocalTpl.html', '../collections/rankCollection'], function(Backbone, rankTpl, rankLocalTpl, RankCollection) {
+
+  rankCollection = new RankCollection();
+
   var RankView = Backbone.View.extend({
     el: '.main',
     initialize: function() {
-      this.modelList = {};
+      this.listenToOnce(rankCollection, 'change', this.render);
+      rankCollection.fetch({
+        data: {
+          type: 'daily'
+        }
+      }).always(function() {
+        $('.inverted.dimmer').removeClass('active');
+      });
     },
     events: {
       'click .rank-type': 'switchRank'
     },
     template: _.template(rankTpl),
-    render: function() {
-      this.$el.html(this.template());
-      this.$listTpl = this.$el.find('.animated.list')[0].innerHTML;
-      this.localTemplate = _.template(this.$listTpl);
+    render: function(collection) {
+      this.listenTo(rankCollection, 'change', this.localRender);
+      this.$el.html(this.template(collection.toJSON()));
+      return this;
     },
-    localRender: function(json) {
-      this.localTemplate(json);
+    localRender: function(collection) {
+      // this.localTemplate(collection.toJSON());
+      this.localTemplate = _.template(rankLocalTpl);
+      this.$el.find('.ui.animated.list').html(this.localTemplate(collection.toJSON()))
     },
     switchState: function($target) {
       $target.hasClass('active') ? $.noop() : $target
@@ -25,22 +37,22 @@ define(['backbone', 'text!../../templates/rankTpl.html', '../models/rank'], func
     },
     switchRank: function(e) {
       var $target = $(e.target);
+
+      if ($target[0].tagName.toLowerCase() != 'a') return;
+      if ($target.hasClass('active')) return;
+
       var that = this;
       // switch sidenav's state
       this.switchState($target);
 
-      $('.dimmer').addClass('active');
-      window.location.hash += $target.data('target'); 
+      $('.inverted.dimmer').addClass('active');
+      window.location.hash += $target.data('target');
 
-      if (this.modelList[$target.data('target') + 'RankModel'] === undefined) {
-        this.modelList[$target.data('target') + 'RankModel'] = new Rank({id: $target.data('target')});
-      }
-
-      this.modelList[$target.data('target') + 'RankModel']
-        .fetch()
-        .done(function(json) {
-          console.log(json);
-          that.localRender(json);
+      rankCollection
+        .fetch({
+          data: {
+            type: $target.data('target')
+          }
         })
         .fail(function() {
           var isReload = window.confirm('请求失败，请刷新浏览器！')
@@ -49,12 +61,11 @@ define(['backbone', 'text!../../templates/rankTpl.html', '../models/rank'], func
           }
         })
         .always(function() {
-          $('.dimmer').removeClass('active');
+          $('.inverted.dimmer').removeClass('active');
         });
-      
+
     }
   });
 
   return RankView;
 });
-  

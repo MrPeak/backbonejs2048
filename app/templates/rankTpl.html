@@ -10,61 +10,38 @@
       <i class="checkered flag icon"></i> Historical
     </a>
   </div>
-  <div class="twelve wide column ui segment main">
-    <div class="ui inverted dimmer">
+  <div class="twelve wide column ui segment main-list">
+    <div class="ui active inverted dimmer">
       <div class="ui text loader">正在加载中...</div>
     </div>
     <div class="ui animated list">
-      <div>
-        <img src="./images/trophy-gold.png" alt="" class="ui avatar image position">
-        <div class="item rank">
-          <img class="ui avatar image" src="/images/demo/avatar.jpg">
-          <div class="content">
-            高峰
+      <div><%= type %></div>
+      <% _(rankData).each(function(val, i) { %>
+        <div>
+          <% if (i == 0) { %>
+            <img src="./images/trophy-gold.png" alt="" class="ui avatar image position">
+          <% } else if (i == 1) { %>
+            <img src="./images/trophy-silver.png" alt="" class="position ui image avatar">
+          <% } else if (i == 2) { %>
+            <img src="./images/trophy-bronze.png" alt="" class="position ui image avatar">
+          <% } else { %>
+            <a class="ui teal circular label position">
+              <% if (i < 9) { %>
+                <%= '0' + (i + 1) %>
+              <% } else { %>
+                <%= i + 1 %>
+              <% } %>
+            </a>
+          <% } %>
+          <div class="item rank">
+            <img class="ui avatar image" src="<%= val.avatar %>">
+            <div class="content">
+              <span class="ui orange horizontal label score"><%= val.score %></span>
+              <span class="user-name"><%= val.name %></span>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
-        <img src="./images/trophy-silver.png" alt="" class="position ui image avatar">
-        <div class="item rank">
-          <img class="ui avatar image" src="/images/demo/avatar2.jpg">
-          <div class="content">
-            <span class="score">2312321312231</span>
-            <span>Poodle</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <img src="./images/trophy-bronze.png" alt="" class="position ui image avatar">
-        <div class="item rank">
-          <img class="ui avatar image" src="/images/demo/avatar3.jpg">
-          <div class="content">
-            <span class="score">2313123</span>
-            <span class="user-name">Paulo</span>
-          </div>
-        </div>
-      </div>
-      <div class="ui divider"></div>
-      <div>
-        <a class="ui teal circular label position">04</a>
-        <div class="item rank">
-          <img class="ui avatar image" src="/images/demo/avatar.jpg">
-          <div class="content">
-            <span class="score">2048</span>
-            <span class="user-name">Snickerdoodle</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a class="ui teal circular label position">10</a>
-        <div class="item rank">
-          <img class="ui avatar image" src="/images/demo/avatar.jpg">
-          <div class="content">
-            <span class="score">1024</span>
-            <span class="user-name">Doodle</span>
-          </div>
-        </div>
-      </div>
+      <% }); %>
     </div>
   </div>
 </div>
