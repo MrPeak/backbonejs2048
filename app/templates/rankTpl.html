@@ -15,7 +15,6 @@
       <div class="ui text loader">正在加载中...</div>
     </div>
     <div class="ui animated list">
-      <div><%= type %></div>
       <% _(rankData).each(function(val, i) { %>
         <div>
           <% if (i == 0) { %>
@@ -34,7 +33,7 @@
             </a>
           <% } %>
           <div class="item rank">
-            <img class="ui avatar image" src="<%= val.avatar %>">
+            <img class="ui avatar image" src="./images/avatars/<%= val.avatar %>.png">
             <div class="content">
               <span class="ui orange horizontal label score"><%= val.score %></span>
               <span class="user-name"><%= val.name %></span>

@@ -5,43 +5,43 @@ var getHandle = function(req, res) {
     type: req.query.type,
     rankData: [{
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }, {
       name: 'gao',
-      avatar: 'http://www.baidu.com',
+      avatar: 'Hulk',
       score: 20000
     }]
   };
