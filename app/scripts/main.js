@@ -2,7 +2,7 @@
 'use strict';
 
 require.config({
-  urlArgs: "v=" +  (new Date()).getTime(),
+  waitSeconds: 0,
   shim: {
     semantic: ['jquery']
   },
