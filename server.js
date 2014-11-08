@@ -8,7 +8,7 @@ var fs = require('fs');
 
 // declare routes requirments
 var routes = {};
-var files = fs.readdirSync('./routes');
+var files = fs.readdirSync(path.join(__dirname, 'routes'));
 
 files.forEach(function(file) {
   routes[file.split('.')[0]] = require('./routes/' + file);
