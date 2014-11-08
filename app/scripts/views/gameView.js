@@ -6,6 +6,7 @@ define(['backbone', 'text!../../templates/gameTpl.html'], function(Backbone, gam
     template:_.template(gameTpl),
     render: function() {
       this.$el.html(this.template());
+      $('.dimmer.body').removeClass('active')
     }
   });
 

@@ -15,7 +15,9 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
     },
     render: function() {
 
-      if (this.isLogin) return;
+      $('.dimmer.body').removeClass('active');
+      
+      if (this.isLogin == 'false') return;
 
       var tplStr = '<a class="item" id="user-info">Welcom! <%= user.name %> <i class="user icon"></i>';
 
@@ -33,7 +35,7 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
         .find('#logout-nav')
         .removeClass('util-hidden')
         .before(compiledTpl);
-
+      
       return this;
     },
     events: {
@@ -48,7 +50,6 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
       return window.localStorage.getItem('isLogin');
     },
     _handleLogin: function(hasLogin) {
-      console.log(hasLogin);
       if (hasLogin === true) {
         return true;
       } else if (typeof hasLogin.type == 'string') {

@@ -1,11 +1,10 @@
 define(['backbone', 'text!../../templates/rankTpl.html', 'text!../../templates/rankLocalTpl.html', '../collections/rankCollection'], function(Backbone, rankTpl, rankLocalTpl, RankCollection) {
 
-  rankCollection = new RankCollection();
-
+  var rankCollection = new RankCollection();
   var RankView = Backbone.View.extend({
     el: '.main',
     initialize: function() {
-      this.listenToOnce(rankCollection, 'change', this.render);
+      this.listenToOnce(rankCollection, 'sync', this.render);
       rankCollection.fetch({
         data: {
           type: 'daily'
@@ -21,6 +20,8 @@ define(['backbone', 'text!../../templates/rankTpl.html', 'text!../../templates/r
     render: function(collection) {
       this.listenTo(rankCollection, 'change', this.localRender);
       this.$el.html(this.template(collection.toJSON()));
+            $('.dimmer.body').removeClass('active');
+
       return this;
     },
     localRender: function(collection) {

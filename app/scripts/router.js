@@ -13,16 +13,17 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
     },
     initialize: function() {
       this.$navItems = $('.ui.nav').find('.item');
-
       var homeView = new HomeView();
       homeView.render();
     },
     game: function() {
+      $('.dimmer.body').addClass('active');
       this.$navItems.removeClass('active').filter('[href="#/"]').addClass('active');
       var gameView = new GameView();
       gameView.render();
     },
     rank: function() {
+      $('.dimmer.body').addClass('active');
       this.$navItems.removeClass('active').filter('[href*="rank"]').addClass('active');
       var rankView = new RankView();
     },
@@ -39,7 +40,7 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
 
 
   var initialize = function() {
-    globalRouter = new GlobalRouter();
+    var globalRouter = new GlobalRouter();
 
     Backbone.history.start();
   };
