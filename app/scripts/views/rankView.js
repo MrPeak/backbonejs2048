@@ -14,7 +14,7 @@ define(['backbone', 'text!../../templates/rankTpl.html', 'text!../../templates/r
       });
     },
     events: {
-      'click .rank-type': 'switchRank'
+      'click .rank-type': '_switchRank'
     },
     template: _.template(rankTpl),
     render: function(collection) {
@@ -29,14 +29,14 @@ define(['backbone', 'text!../../templates/rankTpl.html', 'text!../../templates/r
       this.localTemplate = _.template(rankLocalTpl);
       this.$el.find('.ui.animated.list').html(this.localTemplate(collection.toJSON()))
     },
-    switchState: function($target) {
+    _switchState: function($target) {
       $target.hasClass('active') ? $.noop() : $target
         .siblings('.item')
         .removeClass('active')
         .end()
         .addClass('active');
     },
-    switchRank: function(e) {
+    _switchRank: function(e) {
       var $target = $(e.target);
 
       if ($target[0].tagName.toLowerCase() != 'a') return;
@@ -44,7 +44,7 @@ define(['backbone', 'text!../../templates/rankTpl.html', 'text!../../templates/r
 
       var that = this;
       // switch sidenav's state
-      this.switchState($target);
+      this._switchState($target);
 
       $('.inverted.dimmer').addClass('active');
       window.location.hash += $target.data('target');

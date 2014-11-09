@@ -27,7 +27,7 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
           email: 'gfeng.peak@gmail.com'
         }
       });
-
+      
       this.$el
         .find('#login-nav')
         .addClass('util-hidden')
@@ -47,9 +47,10 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
     },
     _checkLogin: function() {
       // session 逻辑
-      return window.localStorage.getItem('isLogin');
+      return false;
     },
     _handleLogin: function(hasLogin) {
+      console.log(hasLogin);
       if (hasLogin === true) {
         return true;
       } else if (typeof hasLogin.type == 'string') {
@@ -78,7 +79,11 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
     },
     _handleLogout: function() {
       var that = this;
+      $('.ui.text', '.dimmer.body').addClass('util-hidden');
       that.$logoutModal.modal('setting', {
+        onHide: function () {
+          $('.ui.text', '.dimmer.body').removeClass('util-hidden');
+        },        
         onDeny: function() {
           $(this).modal('hide');
         },
@@ -87,6 +92,8 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
           window.location.reload();
         }
       }).modal('show');
+      
+
     },
     _skipLogin: function() {
       var that = this;

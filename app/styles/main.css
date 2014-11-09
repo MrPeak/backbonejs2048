@@ -1,5 +1,4 @@
 /* util classes */
-
 .util-hidden {
   display: none !important;
 }
@@ -19,9 +18,12 @@
   width: 10px;
 }
 
+/* common style */
 body {
   background-color: #F4F4F4;
 }
+
+/* rank style */
 .position {
   padding-top: 0.3em;
 }
@@ -49,4 +51,27 @@ body {
   font-size: 3rem !important;
   height: 140px;
   line-height: 140px !important;
+}
+
+/* game style */
+.canvas {}
+.grid-container {
+  width: 35em;
+  margin: 0 auto;
+}
+.grid-row {
+  overflow: hidden;
+  width: 35em;
+  display: block;
+  margin-bottom: 1em;
+}
+.grid-cell {
+  float: left;
+  width: 8em;
+  height: 8em;
+  margin-left: 1em;
+  background-color: #fff;
+}
+.grid-cell:first-child {
+  margin-left: 0;
 }

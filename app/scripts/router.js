@@ -48,4 +48,5 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
   return {
     initialize: initialize
   };
+
 });
