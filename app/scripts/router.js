@@ -13,7 +13,7 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
     },
     initialize: function() {
       this.$navItems = $('.ui.nav').find('.item');
-      var homeView = new HomeView();
+      var homeView   = new HomeView();
       homeView.render();
     },
     game: function() {
@@ -50,3 +50,4 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
   };
 
 });
+
