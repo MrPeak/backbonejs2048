@@ -1,15 +1,15 @@
 // GET game_data listening
 var getHandle = function(req, res, next) {
   var arr = [{
-    value: 16,
+    value: 2,
     x: 1,
     y: 1
   }, {
-    value: 17,
+    value: 2,
     x: 2,
     y: 1
   }, {
-    value: 18,
+    value: 8,
     x: 1,
     y: 3
   }];

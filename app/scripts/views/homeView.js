@@ -3,6 +3,7 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
   var HomeView = Backbone.View.extend({
     el: 'body',
     initialize: function() {
+      
       this.$loginModal = this.$el.find('.modal.login');
       this.$logoutModal = this.$el.find('.modal.logout');
 
@@ -10,8 +11,6 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
       this._handleLogin(hasLogin);
 
       this.isLogin = hasLogin;
-
-      // C = this.collection = new Rects();
     },
     render: function() {
 
@@ -19,7 +18,8 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
       
       if (this.isLogin == 'false') return;
 
-      var tplStr = '<a class="item" id="user-info">Welcom! <%= user.name %> <i class="user icon"></i>';
+      var tplStr = '<a class="item" id="user-info">Welcom!' 
+                 + '<%= user.name %> <i class="user icon"></i>';
 
       var compiledTpl = _.template(tplStr)({
         user: {
@@ -50,7 +50,6 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
       return false;
     },
     _handleLogin: function(hasLogin) {
-      console.log(hasLogin);
       if (hasLogin === true) {
         return true;
       } else if (typeof hasLogin.type == 'string') {

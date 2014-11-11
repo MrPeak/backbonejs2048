@@ -39,8 +39,8 @@ app.use(express.static(path.join(__dirname, 'app')));
 
 app.get('/rank', routes.getRank.getHandle);
 
-app.get('/gamedata/:id', routes.gamedata.getHandle)
-  .post('/gamedata', routes.gamedata.postHandle);
+app.get('/gamedata', routes.gamedata.getHandle);
+app.post('/gamedata', routes.gamedata.postHandle);
 
 
 // catch 404 and forward to error handler
