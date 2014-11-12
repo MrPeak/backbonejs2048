@@ -9,9 +9,13 @@ var getHandle = function(req, res, next) {
     x: 2,
     y: 1
   }, {
-    value: 8,
+    value: 11,
     x: 1,
     y: 3
+  }, {
+    value: 6,
+    x: 1,
+    y: 2
   }];
 
   res.json(arr);
