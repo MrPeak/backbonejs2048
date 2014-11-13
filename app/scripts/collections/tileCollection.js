@@ -2,6 +2,17 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
   var TileCollection = Backbone.Collection.extend({
     model: TileModel,
     url: '/gamedata',
+    table: (function() {
+      var cells = [];
+      
+      for (var i = 1 ; i <= 4 ; i++ ){
+        for(var j = 1 ; j <= 4 ; j++){
+          cells.push({x : i , y : j });
+        }
+      }
+      
+      return cells;
+    })(),
     up: function() {
       var that = this;
 
@@ -44,6 +55,8 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
           }
 
         });
+      
+        this.born();
     },
     left: function() {
       var that = this;
@@ -85,6 +98,8 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
           }
 
         });
+        
+        this.born();
     },
     down: function() {
       var that = this;
@@ -123,6 +138,8 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
             }
           }
         });
+        
+        this.born();
     },
     right: function() {
       var that = this;
@@ -162,8 +179,28 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
           }
 
         });
+        
+        this.born();
     },
-
+    born: function() {
+      var ocupiedCells = [];
+      var blankCells   = [];
+      
+      this.each(function(model) {
+        ocupiedCells.push({x: model.get('x'), y: model.get('y')});  
+      });
+      
+      blankCells = _(this.table).reject(function(cell) {
+        return _(ocupiedCells).findWhere(cell);
+      }); 
+      
+      // console.log(blankCells);
+      // if(_(blankCells).findWhere({x:1, y:1})) {
+      //   alert("Find it!");
+      // }
+      
+      this.add(blankCells[_.random(0, blankCells.length)]);
+    }
   });
 
   return TileCollection;

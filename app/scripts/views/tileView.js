@@ -11,19 +11,25 @@ define(['backbone', 'text!../../templates/tileTpl.html', '../models/tileModel'],
     render: function() {
       // Manually validate model
       // this.model.isValid();
-      // this.$tile = $(this.template(this.model.toJSON()));
-      // this.$el.append(this.$tile);
+      
+      if (this.$el.children().size() !== 0) {
+        this.$el.children().eq(0)
+          .shape('setting', {
+            duration: '200ms'
+          })
+          .shape('flip ' + window.flipDirection);
+        
+        return this; 
+      }
       
       this.$el.html(this.template(this.model.toJSON()));
-      $('.tile-container').append(this.$el)
+      
       return this;
     },
     move: function(model) {
       var regExp = /translate\S*/g;
-      console.log(this.$el.children().get(0).className)
-      this.$el.children().get(0).className.replace(regExp, 'translate-x' + this.model.get('x') + '-y' + this.model.get('y'));
-      console.log(this.$el.children().get(0).className)
-      
+      this.$el.children().get(0).className = this.$el.children().get(0).className.replace(regExp, 'translate-x' + model.get('x') + '-y' + model.get('y'));
+      console.log('move');
     }
   });
 

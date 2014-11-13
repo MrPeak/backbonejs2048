@@ -6,16 +6,12 @@ define(['backbone'], function(Backbone) {
       x: 1,
       y: 1
     },
-    initialize: function() {
-      this.on('invalid', function() {
-        console.log('invalid');
-      });
-    },
+    initialize: function() {},
     validate: function(attrs, options) {
       if (attrs.value > 10) {
         return "The user win the game!";
       }
-    },
+    }
     /**
      * Change model's propertiess
      *
@@ -26,24 +22,24 @@ define(['backbone'], function(Backbone) {
      * @param {number=} option.dy           The model's y increment
      *
      */
-    updateProp: function(option) {
-      if (typeof option == 'undefined') return false;
-      if (typeof option == 'boolean') {
-        option ? this.set('value', this.get('value') + 1) : $.noop();
-      }
-      else if (typeof option == 'object') {
-        if (option.isCombining) this.set('value', this.get('value') + 1);
-        if ('dx' in option && typeof option.dx == 'number') {
-          this.set('x', this.get('x') + option.dx);
-        }
-        if ('dy' in option && typeof option.dy == 'number') {
-          this.set('y', this.get('y') + option.dy);
-        }
-      }
-      else {
-        throw new Error('Unexpected arguments type!');
-      }
-    }
+    // updateProp: function(option) {
+    //   if (typeof option == 'undefined') return false;
+    //   if (typeof option == 'boolean') {
+    //     option ? this.set('value', this.get('value') + 1) : $.noop();
+    //   }
+    //   else if (typeof option == 'object') {
+    //     if (option.isCombining) this.set('value', this.get('value') + 1);
+    //     if ('dx' in option && typeof option.dx == 'number') {
+    //       this.set('x', this.get('x') + option.dx);
+    //     }
+    //     if ('dy' in option && typeof option.dy == 'number') {
+    //       this.set('y', this.get('y') + option.dy);
+    //     }
+    //   }
+    //   else {
+    //     throw new Error('Unexpected arguments type!');
+    //   }
+    // }
   });
   return TileModel;
 });

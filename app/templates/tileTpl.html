@@ -1,7 +1,7 @@
 <div class="ui cube shape tile translate-x<%= x %>-y<%= y %>">
   <div class="sides">
     <% for (var i = 1; i <= 11; i++) {%>
-      <div class="<%= value == i ? 'active ' : '' %>side">
+      <div class="<%= value == i ? 'active ' : '' %>side color-<%= i %>">
         <div class="content">
           <div class="center"><%= Math.pow(2, i)%></div>
         </div>

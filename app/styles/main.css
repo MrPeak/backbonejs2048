@@ -86,7 +86,56 @@ body {
   position: absolute !important;  
   top: 0;
   left: 0;
+  -webkit-transition: 100ms ease-in-out;
+     -moz-transition: 100ms ease-in-out;
+          transition: 100ms ease-in-out;
+  -webkit-transition-property: -webkit-transform;
+     -moz-transition-property: -moz-transform;
+          transition-property: transform;
 }
+
+.ui.cube.shape .side {
+  border-radius: 4px;
+  padding: 0;
+}
+.tile .center {
+  color: #fff !important;
+  font-size: 4em !important;
+}
+.side.color-1 {
+  background-color: #66BAB7 !important;
+}
+.side.color-2 {
+  background-color: #69B0AC !important;
+}
+.side.color-3 {
+  background-color: #00AA90 !important;
+}
+.side.color-4 {
+  background-color: #268785 !important;
+}
+.side.color-5 {
+  background-color: #0F4C3A !important;
+}
+.side.color-6 {
+  background-color: #26453D !important;
+}
+.side.color-7 {
+  background-color: #4F726C !important;
+}
+.side.color-8 {
+  background-color: #376B6D !important;
+}
+.side.color-9 {
+  background-color: #33A6B8 !important;
+}
+.side.color-10 {
+  background-color: #0089A7 !important;
+}
+.side.color-11 {
+  background-color: #0C4842 !important;
+}
+
 .tile .side {
   min-width: 8em !important;
   width: 8em !important;

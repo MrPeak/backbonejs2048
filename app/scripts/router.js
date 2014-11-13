@@ -19,13 +19,14 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
     game: function() {
       $('.dimmer.body').addClass('active');
       this.$navItems.removeClass('active').filter('[href="#/"]').addClass('active');
-      var gameView = new GameView();
+      gameView = new GameView();
       gameView.render();
     },
     rank: function() {
       $('.dimmer.body').addClass('active');
       this.$navItems.removeClass('active').filter('[href*="rank"]').addClass('active');
       var rankView = new RankView();
+      gameView.remove();
     },
     // search: function(q, id) {
     //   console.log({
