@@ -8,8 +8,9 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
       // Bind collection events
       this.listenTo(tileCollection, 'add', this.addOneTile);
       this.listenTo(tileCollection, 'invalid', this.win);
+      
       // Bind Dom event for 'document'
-      $(document).bind('keyup', {context: this}, this.moveTile);
+      $(document).bind('keydown', {context: this}, this.moveTile);
 
       tileCollection.fetch();
     },
@@ -23,6 +24,9 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
       '68': 'right',
       '39': 'right'
     },
+    // events: {
+    //   'keyup .tile-container': 'moveTile'
+    // },
     template: _.template(gameTpl),
     render: function() {
       this.$el.html(this.template());
@@ -41,21 +45,22 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
 
       this.$el
         .find('.tile-container')
-        .append(newTileView.$el.transition({
+        .append(newTileView.render().$el.transition({
           animation : 'fade',
-          duration  : '250ms'
+          duration  : '300ms'
         }));
-      console.info('new');
     },
     moveTile: function(e) {
       var that = e.data.context;
       var direction = that.keyMap['' + e.which];
-      
       window.flipDirection = that.negative(direction);
+      console.log(direction);
   
       // Excute moving-logic for this tileView
-      tileCollection[direction] && tileCollection[direction]();
-      console.log(direction);
+      if (typeof tileCollection[direction] == 'function') {
+        tileCollection[direction]();
+        
+      }
     },
     negative: function(dir) {
       if (!dir) return false;
