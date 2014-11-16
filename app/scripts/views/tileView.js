@@ -4,8 +4,8 @@ define(['backbone', 'text!../../templates/tileTpl.html', '../models/tileModel'],
     initialize: function() {
       this.time = _.now();
       this.listenTo(this.model, 'change:value', function(model) {
-        console.log('model ' + model.cid + '\'s value changed');
-        console.error('value: ' + model.get('value') + '  time: ' + (new Date).getTime());
+        // console.log('model ' + model.cid + '\'s value changed');
+        // console.error('value: ' + model.get('value') + '  time: ' + (new Date).getTime());
         this.render();
       });
       this.listenTo(this.model, 'change:x', this.move);

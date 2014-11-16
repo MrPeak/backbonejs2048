@@ -54,7 +54,6 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
       var that = e.data.context;
       var direction = that.keyMap['' + e.which];
       window.flipDirection = that.negative(direction);
-      console.log(direction);
   
       // Excute moving-logic for this tileView
       if (typeof tileCollection[direction] == 'function') {
