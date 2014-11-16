@@ -285,6 +285,29 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
       var randomNum = _.random(0, blankCells.length - 1);
 
       this.add(blankCells[randomNum]);
+      
+      if (this.checkLose()) {
+        this.trigger('lose');
+      }
+    },
+    checkLose: function() {
+      if (this.length !== 16) return false;
+      var that = this;
+      
+      var returnValue = this.every(function (model) {
+        var value = model.get('value');
+        var neighborValues = [
+          that.findWhere({x: model.get('x') + 1, y: model.get('y')}) && that.findWhere({x: model.get('x') + 1, y: model.get('y')}).get('value'), 
+          that.findWhere({x: model.get('x') - 1, y: model.get('y')}) && that.findWhere({x: model.get('x') - 1, y: model.get('y')}).get('value'),
+          that.findWhere({x: model.get('x'), y: model.get('y') + 1}) && that.findWhere({x: model.get('x'), y: model.get('y') + 1}).get('value'),
+          that.findWhere({x: model.get('x'), y: model.get('y') - 1}) && that.findWhere({x: model.get('x'), y: model.get('y') - 1}).get('value'),
+        ];
+
+        return !(_.contains(neighborValues, value));
+        
+      });
+
+      return returnValue;
     }
   });
 

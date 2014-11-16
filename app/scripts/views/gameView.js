@@ -8,6 +8,7 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
       // Bind collection events
       this.listenTo(tileCollection, 'add', this.addOneTile);
       this.listenTo(tileCollection, 'invalid', this.win);
+      this.listenTo(tileCollection, 'lose', this.lose);
       
       // Bind Dom event for 'document'
       $(document).bind('keydown', {context: this}, this.moveTile);
@@ -70,6 +71,9 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
     },
     win: function(model) {
       window.alert('You win!');
+    },
+    lose: function() {
+      window.alert('Game over!');
     }
   });
 
