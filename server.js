@@ -30,10 +30,10 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 // dev env 
-app.use(express.static(path.join(__dirname, 'app')));
+// app.use(express.static(path.join(__dirname, 'app')));
 
 // product env
-// app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // ajax routes
 

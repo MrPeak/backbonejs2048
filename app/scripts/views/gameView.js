@@ -63,11 +63,11 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
       }
     },
     negative: function(dir) {
-      if (!dir) return false;
-      if (dir === 'up') return 'down';
-      if (dir === 'down') return 'up';
-      if (dir === 'right') return 'left';
-      if (dir === 'left') return 'right';
+      if (!dir) {return false;}
+      if (dir === 'up') {return 'down';}
+      if (dir === 'down') {return 'up';}
+      if (dir === 'right') {return 'left';}
+      if (dir === 'left') {return 'right';}
     },
     win: function(model) {
       window.alert('You win!');
