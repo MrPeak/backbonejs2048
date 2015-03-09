@@ -18,7 +18,7 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
       
       if (this.isLogin == 'false') return;
 
-      var tplStr = '<a class="item" id="user-info">Welcom!' 
+      var tplStr = '<a class="item" id="user-info">Welcome!' 
                  + '<%= user.name %> <i class="user icon"></i>';
 
       var compiledTpl = _.template(tplStr)({
