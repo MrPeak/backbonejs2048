@@ -39,10 +39,11 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
       return this;
     },
     events: {
-      'click .skip, #cancel-signup': '_skipLogin',
-      'click #login-nav': '_handleLogin',
-      'click #logout-nav': '_handleLogout',
-      'click #goto-signup': '_goToSignUp'
+      // 暂时只保留游戏功能
+      // 'click .skip, #cancel-signup': '_skipLogin',
+      // 'click #login-nav': '_handleLogin',
+      // 'click #logout-nav': '_handleLogout',
+      // 'click #goto-signup': '_goToSignUp'
 
     },
     _checkLogin: function() {

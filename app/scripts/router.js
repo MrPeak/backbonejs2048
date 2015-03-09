@@ -4,7 +4,7 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
   var GlobalRouter = Backbone.Router.extend({
     routes: {
       '': 'game',
-      'rank': 'rank',
+      // 'rank': 'rank',
       // 'home/*path': 'home',
       // 'search/:q': 'search',
       // 'search/:q/user:id': 'search',
@@ -22,12 +22,12 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
       gameView = new GameView();
       gameView.render();
     },
-    rank: function() {
-      $('.dimmer.body').addClass('active');
-      this.$navItems.removeClass('active').filter('[href*="rank"]').addClass('active');
-      var rankView = new RankView();
-      gameView.remove();
-    },
+    // rank: function() {
+    //   $('.dimmer.body').addClass('active');
+    //   this.$navItems.removeClass('active').filter('[href*="rank"]').addClass('active');
+    //   var rankView = new RankView();
+    //   gameView.remove();
+    // },
     // search: function(q, id) {
     //   console.log({
     //     q: q,
@@ -35,7 +35,7 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
     //   });
     // },
     defaultAction: function() {
-      console.log('Do nothing!');
+      this.navigate('/', {trigger: 'true'});
     }
   });
 

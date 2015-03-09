@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'app')));
 
 // ajax routes
 
-app.get('/rank', routes.getRank.getHandle);
+// app.get('/rank', routes.getRank.getHandle);
 
 app.get('/gamedata', routes.gamedata.getHandle);
 app.post('/gamedata', routes.gamedata.postHandle);
