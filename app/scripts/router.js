@@ -21,6 +21,21 @@ define(['backbone', './views/homeView', './views/gameView', './views/rankView'],
       this.$navItems.removeClass('active').filter('[href="#/"]').addClass('active');
       gameView = new GameView();
       gameView.render();
+
+      // Render scores
+      $('#current_score').text(0);
+      $('#highest_score').text(localStorage.getItem('highest_score') || 0);
+
+      // Bind unload event
+      window.onbeforeunload = function() {
+        // debugger;
+        var currentScore = parseInt($('#current_score').text());
+        var hightestScore = parseInt($('#highest_score').text());
+
+        window.localStorage.setItem('highest_score', currentScore > hightestScore ? currentScore : hightestScore);
+
+        return 'Do you want to leave this page?';
+      }
     },
     // rank: function() {
     //   $('.dimmer.body').addClass('active');

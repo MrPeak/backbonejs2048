@@ -1,4 +1,7 @@
-define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
+define(['backbone', '../models/tileModel', '../models/scoreModel'], function(Backbone, TileModel, ScoreModel) {
+
+  var score = new ScoreModel();
+
   var TileCollection = Backbone.Collection.extend({
     model: TileModel,
     url: '/gamedata',
@@ -17,6 +20,9 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
 
       return cells;
     })(),
+    initialize: function() {
+      this.score = score;
+    },
     up: function() {
       var that = this;
       var dirty = false;
@@ -68,7 +74,7 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
 
 
               // Update the score ...
-              // score.set('value', score.get('value') + nearestNeighbor.get('value'));
+              that.score.set('value', that.score.get('value') + Math.pow(2, nearestNeighbor.get('value')));
             }
             else {
               tile.set('y', nearestNeighbor.get('y') + 1);
@@ -131,7 +137,7 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
               tile.destroy();
 
 
-              // score.set('value', score.get('value') + nearestNeighbor.get('value'));
+              that.score.set('value', that.score.get('value') + Math.pow(2, nearestNeighbor.get('value')));
             }
             else {
               tile.set('x', (nearestNeighbor.get('x') + 1));
@@ -192,7 +198,7 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
 
 
               // Then we update the score ...
-              // score.set('value', score.get('value') + nearestNeighbor.get('value'));
+              that.score.set('value', that.score.get('value') + Math.pow(2, nearestNeighbor.get('value')));
             }
             else {
               tile.set('y', (nearestNeighbor.get('y') - 1));
@@ -252,7 +258,7 @@ define(['backbone', '../models/tileModel'], function(Backbone, TileModel) {
 
 
               // Then we update the score ...
-              // score.set('value', score.get('value') + nearestNeighbor.get('value'));
+              that.score.set('value', that.score.get('value') + Math.pow(2, nearestNeighbor.get('value')));
             }
             else {
               tile.set('x', nearestNeighbor.get('x') - 1);

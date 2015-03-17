@@ -1,14 +1,14 @@
 define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '../collections/tileCollection'], function(Backbone, gameTpl, TileView, TileCollection) {
   var tileCollection = new TileCollection();
-  
+
   var GameView = Backbone.View.extend({
     // el: '.main',
     initialize: function() {
-      
       // Bind collection events
       this.listenTo(tileCollection, 'add', this.addOneTile);
       this.listenTo(tileCollection, 'invalid', this.win);
       this.listenTo(tileCollection, 'lose', this.lose);
+      this.listenTo(tileCollection.score, 'change:value', this.updateScore);
       
       // Bind Dom event for 'document'
       $(document).bind('keydown', {context: this}, this.moveTile);
@@ -74,6 +74,12 @@ define(['backbone', 'text!../../templates/gameTpl.html', '../views/tileView', '.
     },
     lose: function() {
       window.alert('Game over!');
+    },
+    updateScore: function(model, value) {
+      $('#current_score').text(value);
+      if (model.highestScore < value) {
+        $('#highest_score').text(value);
+      }
     }
   });
 
