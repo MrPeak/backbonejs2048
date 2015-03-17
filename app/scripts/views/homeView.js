@@ -16,7 +16,7 @@ define(['backbone', '../collections/tileCollection'], function(Backbone, Rects) 
 
       $('.dimmer.body').removeClass('active');
       
-      if (this.isLogin == 'false') return;
+      if (this.isLogin == false) return;
 
       var tplStr = '<a class="item" id="user-info">Welcome!' 
                  + '<%= user.name %> <i class="user icon"></i>';
