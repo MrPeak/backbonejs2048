@@ -1,10 +1,11 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var fs = require('fs');
+var compression   = require('compression');
+var bodyParser   = require('body-parser');
+var fs           = require('fs');
 
 // declare routes requirments
 var routes = {};
@@ -29,11 +30,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 
+// 开启gzip
+app.use(compression());
+
 // dev env 
-app.use(express.static(path.join(__dirname, 'app')));
+// app.use(express.static(path.join(__dirname, 'app')));
 
 // product env
-// app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // ajax routes
 
